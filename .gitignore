@@ -1,0 +1,33 @@
+# Datasets (ver README.md para instrucciones de descarga)
+FantasyID/
+Dataset_SIDTD/
+
+# Pesos de modelos y checkpoints de entrenamiento
+*.pt
+checkpoints_nested/
+checkpoints_variants/
+
+# Resultados de experimentos (no son código; algunos pesan demasiado)
+exports_hpo_pareto_nested/
+exports_hpo_pareto_nested_*/
+exports_efficientnet_b4/
+exports_local_test/
+exports_local_test_*/
+*.zip
+*.sqlite3
+
+# Informes generados (no forman parte del código)
+informe_*.html
+informe_*.docx
+informe_assets/
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Entorno / editor
+.vscode/

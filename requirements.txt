@@ -1,0 +1,29 @@
+# DocVerify — dependencias Python
+#
+# Instalación estándar (CPU):
+#   pip install -r requirements.txt
+#
+# Con soporte CUDA (HPC/GPU — reemplaza la línea de torch):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+#   pip install -r requirements.txt --ignore-installed torch torchvision
+#
+# Versión de Python recomendada: 3.10 o 3.11
+
+# ── Deep learning ──────────────────────────────────────────────
+torch>=2.1.0
+torchvision>=0.16.0
+
+# ── Datos y ciencia ────────────────────────────────────────────
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+scipy>=1.11.0
+
+# ── Imágenes ───────────────────────────────────────────────────
+Pillow>=10.0.0
+
+# ── Optimización de hiperparámetros ────────────────────────────
+optuna>=3.4.0
+
+# ── Progreso ───────────────────────────────────────────────────
+tqdm>=4.66.0
