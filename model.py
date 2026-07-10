@@ -1,5 +1,6 @@
 """
 model.py — Arquitectura, pérdidas y métricas del modelo DocVerify en PyTorch.
+incluye los 3 codificadores: Patel, EfficientNet y vit_b_16
 """
 
 import math
@@ -227,13 +228,314 @@ class DocVerifyModel(nn.Module):
 
 
 # ============================================================
+# ENCODER ALTERNATIVO: EfficientNet-B4 (drop-in replacement)
+# ============================================================
+
+class DocVerifyEfficientNet(nn.Module):
+    """
+    EfficientNet-B4 Encoder (pretrained ImageNet) + U-Net Decoder.
+    Drop-in replacement del encoder Patel en DocVerify.
+
+    Diferencias respecto a DocVerifyModel (Patel):
+      - Encoder: EfficientNet-B4 (torchvision, pesos ImageNet)
+      - Skip channels: [24, 32, 56, 160, 448] vs Patel [16, 32, 64, 128, 256]
+      - Sin skip a 224x224 (EfficientNet hace stride=2 desde la primera capa)
+      - Normalización ImageNet aplicada internamente (inputs siguen siendo [0,1])
+      - Bottleneck: 448ch en vez de 256ch
+    """
+
+    def __init__(
+        self,
+        alpha:        float = 0.2,
+        dropout_rate: float = 0.5,
+        dec_ch:       int   = 128,
+        pretrained:   bool  = True,
+    ):
+        super().__init__()
+
+        # ── Normalización ImageNet (aplicada en forward) ──────
+        self.register_buffer(
+            "norm_mean",
+            torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1)
+        )
+        self.register_buffer(
+            "norm_std",
+            torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
+        )
+
+        # ── Encoder EfficientNet-B4 ───────────────────────────
+        from torchvision.models import efficientnet_b4, EfficientNet_B4_Weights
+        weights = EfficientNet_B4_Weights.DEFAULT if pretrained else None
+        _eff  = efficientnet_b4(weights=weights)
+        feats = _eff.features  # nn.Sequential de 9 bloques
+
+        # stem + MBConv stage1  → 24ch, 112x112 (stride=2 en stem)
+        self.enc_112 = nn.Sequential(feats[0], feats[1])
+        # MBConv stage2         → 32ch,  56x56 (stride=2)
+        self.enc_56  = feats[2]
+        # MBConv stage3         → 56ch,  28x28 (stride=2)
+        self.enc_28  = feats[3]
+        # MBConv stages 4+5     → 160ch, 14x14 (stride=2 en stage4, stride=1 en stage5)
+        self.enc_14  = nn.Sequential(feats[4], feats[5])
+        # MBConv stages 6+7     → 448ch,  7x7 (stride=2 en stage6, stride=1 en stage7)
+        self.enc_7   = nn.Sequential(feats[6], feats[7])
+        # feats[8] (head 1792ch) no se usa
+
+        # ── Cabeza de clasificación ───────────────────────────
+        self.cls_gap = nn.AdaptiveAvgPool2d(1)
+        self.cls_head = nn.Sequential(
+            nn.Dropout(dropout_rate),
+            nn.Linear(448, 32), nn.LeakyReLU(alpha, inplace=True),
+            nn.Dropout(dropout_rate),
+            nn.Linear(32, 16),  nn.LeakyReLU(alpha, inplace=True),
+            nn.Dropout(dropout_rate),
+            nn.Linear(16, 16),  nn.LeakyReLU(alpha, inplace=True),
+            nn.Dropout(dropout_rate),
+            nn.Linear(16, 1),
+        )
+
+        # ── Cabeza de segmentación (decoder U-Net) ────────────
+        self.mask_proj = nn.Sequential(
+            nn.Conv2d(448, dec_ch, 1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+        )
+
+        self.dec14  = DecBlock(dec_ch,       160, dec_ch,       alpha)  # 7  → 14, skip 160ch
+        self.dec28  = DecBlock(dec_ch,        56, dec_ch // 2,  alpha)  # 14 → 28, skip  56ch
+        self.dec56  = DecBlock(dec_ch // 2,   32, dec_ch // 4,  alpha)  # 28 → 56, skip  32ch
+        self.dec112 = DecBlock(dec_ch // 4,   24, dec_ch // 8,  alpha)  # 56 → 112, skip 24ch
+
+        # Sin skip a 224x224: EfficientNet no tiene features a esa escala
+        self.dec224 = nn.Sequential(
+            nn.Upsample(scale_factor=2, mode="bilinear", align_corners=False),
+            nn.Conv2d(dec_ch // 8, dec_ch // 16, 3, padding=1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+            nn.Conv2d(dec_ch // 16, dec_ch // 16, 3, padding=1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+        )
+
+        self.mask_out = nn.Conv2d(dec_ch // 16, 1, 1)
+
+    def forward(self, x: torch.Tensor) -> dict:
+        H, W = x.shape[2], x.shape[3]
+
+        # Normalización ImageNet (inputs en [0,1])
+        x = (x - self.norm_mean) / self.norm_std
+
+        # Encoder con skip connections
+        s112       = self.enc_112(x)    # 24ch, 112x112
+        s56        = self.enc_56(s112)  # 32ch,  56x56
+        s28        = self.enc_28(s56)   # 56ch,  28x28
+        s14        = self.enc_14(s28)   # 160ch, 14x14
+        bottleneck = self.enc_7(s14)    # 448ch,  7x7
+
+        # Clasificación
+        c = self.cls_gap(bottleneck).flatten(1)
+        cls_out = self.cls_head(c)
+
+        # Segmentación
+        m = self.mask_proj(bottleneck)  # dec_ch,      7x7
+        m = self.dec14(m,  s14)         # dec_ch,     14x14
+        m = self.dec28(m,  s28)         # dec_ch//2,  28x28
+        m = self.dec56(m,  s56)         # dec_ch//4,  56x56
+        m = self.dec112(m, s112)        # dec_ch//8, 112x112
+        m = self.dec224(m)              # dec_ch//16,224x224
+
+        m = F.interpolate(m, size=(H, W), mode="bilinear", align_corners=False)
+        mask_out = self.mask_out(m)
+
+        return {"cls": cls_out, "mask": mask_out}
+
+
+# ============================================================
+# ADAPTADOR: representaciones pseudo-multiescala para ViT
+# ============================================================
+
+class ViTPseudoSkipAdapter(nn.Module):
+    """
+    Genera mapas pseudo-multiescala a partir de la única rejilla nativa de ViT
+    (14x14), ya que el transformer no produce features jerárquicos como una CNN.
+
+    No son skips "extraídos" (no existen a esas resoluciones en ViT): cada rama
+    aprende a sintetizar el detalle espacial necesario a su escala objetivo
+    mediante upsampling + convolución, partiendo siempre de la misma rejilla
+    14x14x768. Mismo patrón usado en TransUNet / ViT-Adapter para conectar
+    transformers con decoders tipo U-Net.
+    """
+
+    def __init__(self, in_ch: int = 768, alpha: float = 0.2):
+        super().__init__()
+        self.to_s28 = nn.Sequential(
+            nn.Upsample(scale_factor=2, mode="bilinear", align_corners=False),
+            nn.Conv2d(in_ch, 128, 3, padding=1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+        )
+        self.to_s56 = nn.Sequential(
+            nn.Upsample(scale_factor=4, mode="bilinear", align_corners=False),
+            nn.Conv2d(in_ch, 64, 3, padding=1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+        )
+        self.to_s112 = nn.Sequential(
+            nn.Upsample(scale_factor=8, mode="bilinear", align_corners=False),
+            nn.Conv2d(in_ch, 32, 3, padding=1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+        )
+
+    def forward(self, grid: torch.Tensor):
+        return self.to_s28(grid), self.to_s56(grid), self.to_s112(grid)
+
+
+# ============================================================
+# ENCODER ALTERNATIVO: ViT-B/16 (drop-in replacement)
+# ============================================================
+
+class DocVerifyViT(nn.Module):
+    """
+    ViT-B/16 Encoder (pretrained ImageNet) + adaptador pseudo-multiescala +
+    U-Net Decoder. Drop-in replacement del encoder Patel/EfficientNet en DocVerify.
+
+    Diferencias respecto a DocVerifyModel (Patel) y DocVerifyEfficientNet:
+      - Encoder: ViT-B/16 (torchvision, pesos ImageNet), basado en atención, no
+        en convoluciones.
+      - Sin downsampling progresivo: ViT mantiene una rejilla constante de
+        14x14 (patches de 16x16) en sus 12 capas — no hay mapas nativos a 28,
+        56 o 112. El bottleneck del decoder es directamente esa rejilla 14x14.
+      - Las skip connections del decoder (28, 56, 112) se generan de forma
+        sintética con ViTPseudoSkipAdapter, no se extraen del encoder.
+      - La cabeza de clasificación usa el class token final (uso nativo de
+        ViT), no un Global Average Pooling sobre la rejilla de parches.
+    """
+
+    def __init__(
+        self,
+        alpha:        float = 0.2,
+        dropout_rate: float = 0.5,
+        dec_ch:       int   = 128,
+        pretrained:   bool  = True,
+    ):
+        super().__init__()
+
+        self.hidden_dim = 768
+
+        # ── Normalización ImageNet (aplicada en forward) ──────
+        self.register_buffer(
+            "norm_mean",
+            torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1)
+        )
+        self.register_buffer(
+            "norm_std",
+            torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
+        )
+
+        # ── Encoder ViT-B/16 ───────────────────────────────────
+        from torchvision.models import vit_b_16, ViT_B_16_Weights
+        weights = ViT_B_16_Weights.DEFAULT if pretrained else None
+        _vit = vit_b_16(weights=weights)
+
+        self.conv_proj   = _vit.conv_proj    # patch embedding: Conv2d(3, 768, k=16, s=16)
+        self.class_token = _vit.class_token  # (1, 1, 768)
+        self.vit_encoder = _vit.encoder      # pos_embedding + 12 EncoderBlock + LayerNorm final
+        # _vit.heads (cabeza de clasificación original) no se usa
+
+        # ── Adaptador pseudo-multiescala ───────────────────────
+        self.adapter = ViTPseudoSkipAdapter(in_ch=self.hidden_dim, alpha=alpha)
+
+        # ── Cabeza de clasificación (sobre el class token) ─────
+        self.cls_head = nn.Sequential(
+            nn.Dropout(dropout_rate),
+            nn.Linear(self.hidden_dim, 32), nn.LeakyReLU(alpha, inplace=True),
+            nn.Dropout(dropout_rate),
+            nn.Linear(32, 16),  nn.LeakyReLU(alpha, inplace=True),
+            nn.Dropout(dropout_rate),
+            nn.Linear(16, 16),  nn.LeakyReLU(alpha, inplace=True),
+            nn.Dropout(dropout_rate),
+            nn.Linear(16, 1),
+        )
+
+        # ── Cabeza de segmentación (decoder U-Net) ─────────────
+        self.mask_proj = nn.Sequential(
+            nn.Conv2d(self.hidden_dim, dec_ch, 1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+        )
+
+        self.dec28  = DecBlock(dec_ch,       128, dec_ch // 2,  alpha)  # 14 → 28, skip 128ch
+        self.dec56  = DecBlock(dec_ch // 2,   64, dec_ch // 4,  alpha)  # 28 → 56, skip  64ch
+        self.dec112 = DecBlock(dec_ch // 4,   32, dec_ch // 8,  alpha)  # 56 → 112, skip 32ch
+
+        # Sin skip a 224x224 (igual que en EfficientNet-B4)
+        self.dec224 = nn.Sequential(
+            nn.Upsample(scale_factor=2, mode="bilinear", align_corners=False),
+            nn.Conv2d(dec_ch // 8, dec_ch // 16, 3, padding=1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+            nn.Conv2d(dec_ch // 16, dec_ch // 16, 3, padding=1, bias=False),
+            nn.LeakyReLU(alpha, inplace=True),
+        )
+
+        self.mask_out = nn.Conv2d(dec_ch // 16, 1, 1)
+
+    def forward(self, x: torch.Tensor) -> dict:
+        H, W = x.shape[2], x.shape[3]
+        B = x.shape[0]
+
+        # Normalización ImageNet (inputs en [0,1])
+        x = (x - self.norm_mean) / self.norm_std
+
+        # Patch embedding → secuencia de tokens
+        x = self.conv_proj(x)                    # (B, 768, 14, 14)
+        gh, gw = x.shape[2], x.shape[3]
+        x = x.reshape(B, self.hidden_dim, gh * gw).permute(0, 2, 1)  # (B, 196, 768)
+
+        cls_tok = self.class_token.expand(B, -1, -1)  # (B, 1, 768)
+        x = torch.cat([cls_tok, x], dim=1)            # (B, 197, 768)
+
+        # Encoder ViT (pos_embedding + 12 capas de atención + LayerNorm final)
+        x = self.vit_encoder(x)                       # (B, 197, 768)
+
+        cls_token_out = x[:, 0]                        # (B, 768)
+        patch_tokens  = x[:, 1:]                        # (B, 196, 768)
+        grid = patch_tokens.permute(0, 2, 1).reshape(B, self.hidden_dim, gh, gw)  # (B, 768, 14, 14)
+
+        # Clasificación (sobre el class token)
+        cls_out = self.cls_head(cls_token_out)
+
+        # Segmentación (sobre la rejilla de parches + adaptador pseudo-multiescala)
+        s28, s56, s112 = self.adapter(grid)
+
+        m = self.mask_proj(grid)        # dec_ch,      14x14
+        m = self.dec28(m,  s28)         # dec_ch//2,   28x28
+        m = self.dec56(m,  s56)         # dec_ch//4,   56x56
+        m = self.dec112(m, s112)        # dec_ch//8,  112x112
+        m = self.dec224(m)              # dec_ch//16, 224x224
+
+        m = F.interpolate(m, size=(H, W), mode="bilinear", align_corners=False)
+        mask_out = self.mask_out(m)
+
+        return {"cls": cls_out, "mask": mask_out}
+
+
+# ============================================================
 # FACTORY: construir modelo + optimizador
 # ============================================================
 
 def build_model(params: dict, device: torch.device) -> nn.Module:
     """Construye el modelo con los hiperparámetros dados y lo mueve al device."""
 
-    model = DocVerifyModel(
+    # ── [Patel] encoder original ──────────────────────────────
+    # model = DocVerifyModel(
+    #     alpha        = float(params.get("alpha", config.LEAKY_RELU_ALPHA)),
+    #     dropout_rate = float(params["dropout_rate"]),
+    #     dec_ch       = int(params["dec_ch"]),
+    # )
+
+    # ── [EfficientNet-B4] encoder drop-in replacement ─────────
+    # model = DocVerifyEfficientNet(
+    #     alpha        = float(params.get("alpha", config.LEAKY_RELU_ALPHA)),
+    #     dropout_rate = float(params["dropout_rate"]),
+    #     dec_ch       = int(params["dec_ch"]),
+    # )
+
+    # ── [ViT-B/16] encoder drop-in replacement ────────────────
+    model = DocVerifyViT(
         alpha        = float(params.get("alpha", config.LEAKY_RELU_ALPHA)),
         dropout_rate = float(params["dropout_rate"]),
         dec_ch       = int(params["dec_ch"]),
