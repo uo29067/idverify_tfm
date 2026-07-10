@@ -1,6 +1,7 @@
 """
 train.py — Lógica de entrenamiento: Nested CV, HPO con Optuna,
            test ciego multi-seed, ablación y estadística inferencial (PyTorch).
+           incluye Resiliencia
 """
 
 import gc
@@ -1032,6 +1033,10 @@ def run_blind_test(df_dev: pd.DataFrame, df_holdout: pd.DataFrame, final_params:
 
     for variant in variants:
         for seed in config.FINAL_SEEDS:
+            model_path = config.MODELS_DIR / f"model_{variant}_seed{seed}{config.RUN_TAG}.pt"
+            if model_path.exists():
+                print(f"\n  [Skip] variant={variant} seed={seed} — modelo ya existe, saltando")
+                continue
             print(f"\n  [FINAL] variant={variant} seed={seed}")
             _train_final_model(
                 final_params,

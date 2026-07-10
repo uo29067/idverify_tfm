@@ -4,6 +4,7 @@ Modifica este archivo para ajustar rutas, hiperparámetros y comportamiento del 
 """
 
 import os
+from datetime import datetime
 from pathlib import Path
 
 # ============================================================
@@ -26,7 +27,7 @@ SIDTD_ROOT = Path(os.getenv("SIDTD_ROOT", "./Dataset_SIDTD"))
 # ============================================================
 # DIRECTORIO DE EXPORTACIÓN DE RESULTADOS
 # ============================================================
-EXPORT_DIR = Path(os.getenv("EXPORT_DIR", "./exports_hpo_pareto_nested"))
+EXPORT_DIR = Path(os.getenv("EXPORT_DIR", f"./exports_{datetime.now():%Y%m%d_%H%M%S}"))
 
 # ============================================================
 # IMAGEN Y MODELO

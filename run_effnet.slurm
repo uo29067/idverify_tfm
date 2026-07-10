@@ -17,7 +17,7 @@ conda activate docverify
 # Ir al directorio del proyecto
 cd ~/mywork_HPC
 
-# Resultados en carpeta separada para no mezclar con Patel
+# Resultados en carpeta separada para no mezclar codificadores
 export EXPORT_DIR=./exports_efficientnet_b4
 
 # === EJECUCIÓN ===

@@ -4,10 +4,11 @@
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
-#SBATCH --time=0-04:00:00
+#SBATCH --time=4-00:00:00
 #SBATCH --output=eval_sidtd_effnet_%j.log
-#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-type=END,FAIL,REQUEUE
 #SBATCH --mail-user=uo29067@uniovi.es
+#SBATCH --requeue
 
 # Activar entorno conda
 source /soft/miniconda3/bin/activate
@@ -16,7 +17,7 @@ conda activate docverify
 # Ir al directorio del proyecto
 cd ~/mywork_HPC
 
-# Evaluar los modelos EfficientNet-B4 (no los de Patel)
+# Evaluar los modelos EfficientNet-B4
 export EXPORT_DIR=./exports_efficientnet_b4
 
 # === EJECUCIÓN ===
