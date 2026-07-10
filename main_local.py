@@ -7,8 +7,6 @@ de llevarlo al HPC. Los parámetros son mínimos — NO sirve para producción.
 Uso:
     python main_local.py
 
-Cuando el resultado sea satisfactorio, lleva al HPC y ejecuta:
-    python main.py
 """
 
 import os

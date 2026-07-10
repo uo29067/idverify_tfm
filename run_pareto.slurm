@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=docverify
+#SBATCH --job-name=docverify_pareto
 #SBATCH --partition=gpu-20
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=4-00:00:00
-#SBATCH --output=salida_%j.log
+#SBATCH --output=salida_pareto_%j.log
 #SBATCH --mail-type=END,FAIL,REQUEUE
 #SBATCH --mail-user=uo29067@uniovi.es
 #SBATCH --requeue
@@ -15,7 +15,10 @@ source /soft/miniconda3/bin/activate
 conda activate docverify
 
 # Ir al directorio del proyecto
-cd ~/IDVerify_HPC
+cd ~/mywork_HPC
+
+# Resultados en carpeta separada para no mezclar codificadores
+export EXPORT_DIR=./exports_hpo_pareto_nested
 
 # === EJECUCIÓN ===
 echo "[SLURM] Lanzando entrenamiento con reanudación automática"
