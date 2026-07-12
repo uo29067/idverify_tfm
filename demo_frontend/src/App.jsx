@@ -11,12 +11,23 @@ export default function App() {
   const [result,      setResult]      = useState(null)
   const [loading,     setLoading]     = useState(false)
   const [error,       setError]       = useState(null)
+  const [meta,        setMeta]        = useState(null)
 
   // Lanzar análisis automáticamente al cambiar DNI o encoder
   useEffect(() => {
     if (!selectedDni) return
     analyze(selectedDni, encoder)
   }, [selectedDni, encoder])
+
+  // Cargar metadatos (regiones anotadas: campos realmente alterados) al cambiar de DNI
+  useEffect(() => {
+    if (!selectedDni) { setMeta(null); return }
+    setMeta(null)
+    fetch(`${API}${selectedDni.meta_url}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(setMeta)
+      .catch(() => setMeta(null))
+  }, [selectedDni])
 
   async function analyze(dni, enc) {
     setError(null)
@@ -65,6 +76,7 @@ export default function App() {
             dniItem={selectedDni}
             result={result}
             loading={loading}
+            meta={meta}
           />
         </div>
       </div>

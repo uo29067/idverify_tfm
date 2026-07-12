@@ -203,6 +203,32 @@ button {
   object-fit: contain;
   display: block;
 }
+
+/* ── Regiones realmente alteradas (vista Original) ── */
+.doc-image-wrap {
+  position: relative;
+  width: 100%;
+}
+.doc-image-wrap img.doc-image--natural {
+  max-height: none;
+  object-fit: initial;
+}
+.altered-regions-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.altered-region-box {
+  position: absolute;
+  border: 2px solid #E53935;
+  background: rgba(229, 57, 53, 0.12);
+  border-radius: 2px;
+}
+.altered-regions-caption {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: #7A7A7A;
+}
 .doc-placeholder {
   display: flex;
   align-items: center;
