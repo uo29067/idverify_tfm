@@ -1,0 +1,131 @@
+{
+  "person_info": {
+    "gender": "F",
+    "face_id": "097_03",
+    "face_db": "facelab_london"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 866,
+        "y": 409,
+        "width": 404,
+        "height": 92
+      },
+      "region_attributes": {
+        "field_name": "surname",
+        "val": "FONTAINE",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 871,
+        "y": 654,
+        "width": 469,
+        "height": 89
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "val": "Anaïs, Laura",
+        "language": "other"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 881,
+        "y": 1229,
+        "width": 694,
+        "height": 87
+      },
+      "region_attributes": {
+        "field_name": "alternative",
+        "val": "FONTAINE-DUPUIS",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1951,
+        "y": 864,
+        "width": 437,
+        "height": 89
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "07 07 1987",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1958,
+        "y": 1406,
+        "width": 437,
+        "height": 89
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "25 03 2030",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 0,
+        "y": 549,
+        "width": 914,
+        "height": 1136
+      },
+      "region_attributes": {
+        "field_name": "face"
+      }
+    }
+  ],
+  "cropping_info": {
+    "transformation_matrix_into_cropped": [
+      [
+        1.0279727679181239,
+        0.007833321209223696,
+        -125.00112704094194
+      ],
+      [
+        -0.005890407333316071,
+        1.0264034778303264,
+        -1427.073402447986
+      ],
+      [
+        1.0115186512376274e-05,
+        -6.661986671011556e-07,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 2788,
+    "resulted_cropped_image_height": 1754,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        111.0,
+        1391.0
+      ],
+      [
+        2899.0,
+        1407.0
+      ],
+      [
+        2882.0,
+        3161.0
+      ],
+      [
+        98.0,
+        3097.0
+      ]
+    ]
+  },
+  "ground_truth": "bonafide"
+}

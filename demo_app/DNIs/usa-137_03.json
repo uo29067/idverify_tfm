@@ -1,0 +1,270 @@
+{
+  "person_info": {
+    "gender": "M",
+    "face_id": "137_03",
+    "face_db": "facelab_london"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 880,
+        "y": 664,
+        "width": 525,
+        "height": 95
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "val": "Ethan Knight",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 880,
+        "y": 747,
+        "width": 485,
+        "height": 95
+      },
+      "region_attributes": {
+        "field_name": "address",
+        "val": "678 Pine Rd",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 882,
+        "y": 830,
+        "width": 689,
+        "height": 93
+      },
+      "region_attributes": {
+        "field_name": "city",
+        "val": "Denver CO 80203",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2293,
+        "y": 1071,
+        "width": 389,
+        "height": 95
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "09-15-85",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1184,
+        "y": 1639,
+        "width": 503,
+        "height": 95
+      },
+      "region_attributes": {
+        "field_name": "doi",
+        "val": "03/20/2015",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 399,
+        "y": 387,
+        "width": 392,
+        "height": 98
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "10-31-27",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1622,
+        "y": 991,
+        "width": 208,
+        "height": 98
+      },
+      "region_attributes": {
+        "field_name": "hair",
+        "val": "GRY",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2422,
+        "y": 980,
+        "width": 193,
+        "height": 98
+      },
+      "region_attributes": {
+        "field_name": "eyes",
+        "val": "BLK",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1066,
+        "y": 1089,
+        "width": 221,
+        "height": 98
+      },
+      "region_attributes": {
+        "field_name": "height",
+        "val": "5-11",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1559,
+        "y": 1081,
+        "width": 191,
+        "height": 98
+      },
+      "region_attributes": {
+        "field_name": "weight",
+        "val": "165",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 0,
+        "y": 560,
+        "width": 920,
+        "height": 1146
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2180,
+        "y": 492,
+        "width": 455,
+        "height": 573
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2293,
+        "y": 1071,
+        "width": 389,
+        "height": 95
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "org_value": "09-15-85",
+        "new_value": "24-12-38",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 399,
+        "y": 387,
+        "width": 392,
+        "height": 98
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "org_value": "10-31-27",
+        "new_value": "15-11-17",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 880,
+        "y": 664,
+        "width": 525,
+        "height": 95
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "org_value": "Ethan Knight",
+        "new_value": "Saran Knight",
+        "region_provenance": "altered"
+      }
+    }
+  ],
+  "cropping_info": {
+    "transformation_matrix_into_cropped": [
+      [
+        1.02799676196264,
+        0.01415486074991586,
+        -139.37406701645284
+      ],
+      [
+        -0.006228239268233136,
+        1.028025846274255,
+        -1237.0019584412835
+      ],
+      [
+        9.410728096647504e-06,
+        4.5547808524181826e-07,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 2807,
+    "resulted_cropped_image_height": 1789,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        119.0,
+        1204.0
+      ],
+      [
+        2925.0,
+        1221.0
+      ],
+      [
+        2902.0,
+        3010.0
+      ],
+      [
+        95.0,
+        2947.0
+      ]
+    ]
+  },
+  "ground_truth": "attack"
+}

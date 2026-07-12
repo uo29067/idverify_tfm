@@ -1,0 +1,103 @@
+{
+  "person_info": {
+    "gender": "F",
+    "face_id": "NF-1024",
+    "face_db": "AMFD_Faces_Final"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 649,
+        "y": 340,
+        "width": 422,
+        "height": 65
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "val": "GOMES SOUSA",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1677,
+        "y": 574,
+        "width": 329,
+        "height": 67
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "02 05 1979",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1278,
+        "y": 752,
+        "width": 329,
+        "height": 67
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "29 04 2028",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 0,
+        "y": 312,
+        "width": 657,
+        "height": 809
+      },
+      "region_attributes": {
+        "field_name": "face"
+      }
+    }
+  ],
+  "cropping_info": {
+    "transformation_matrix_into_cropped": [
+      [
+        1.0006559578689473,
+        0.016770770243613658,
+        -331.899133377862
+      ],
+      [
+        -0.00404862202940661,
+        1.0035521855391503,
+        -518.5323271937814
+      ],
+      [
+        -1.628125838946074e-06,
+        2.774334835187134e-06,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 1990,
+    "resulted_cropped_image_height": 1253,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        323.0,
+        518.0
+      ],
+      [
+        2306.0,
+        526.0
+      ],
+      [
+        2292.0,
+        1775.0
+      ],
+      [
+        302.0,
+        1771.0
+      ]
+    ]
+  },
+  "ground_truth": "bonafide"
+}

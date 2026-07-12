@@ -1,0 +1,8 @@
+**/node_modules
+**/__pycache__
+**/.pytest_cache
+**/dist
+demo_app/DNIs_rafael_backup
+*.csv
+*.log
+.git

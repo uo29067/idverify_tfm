@@ -1,0 +1,213 @@
+{
+  "person_info": {
+    "gender": "F",
+    "face_id": "NF-1017",
+    "face_db": "AMFD_Faces_Final"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1007,
+        "y": 718,
+        "width": 583,
+        "height": 123
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "val": "Olivia Queen",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1007,
+        "y": 812,
+        "width": 640,
+        "height": 125
+      },
+      "region_attributes": {
+        "field_name": "address",
+        "val": "345 Cherry Ln",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1004,
+        "y": 906,
+        "width": 861,
+        "height": 128
+      },
+      "region_attributes": {
+        "field_name": "city",
+        "val": "Nashville TN 37212",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2615,
+        "y": 1224,
+        "width": 443,
+        "height": 123
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "11-30-93",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1310,
+        "y": 1828,
+        "width": 572,
+        "height": 123
+      },
+      "region_attributes": {
+        "field_name": "doi",
+        "val": "08/30/2019",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 469,
+        "y": 391,
+        "width": 443,
+        "height": 123
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "12-24-31",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1845,
+        "y": 1110,
+        "width": 226,
+        "height": 117
+      },
+      "region_attributes": {
+        "field_name": "hair",
+        "val": "RED",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2766,
+        "y": 1124,
+        "width": 214,
+        "height": 117
+      },
+      "region_attributes": {
+        "field_name": "eyes",
+        "val": "HZL",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1201,
+        "y": 1201,
+        "width": 197,
+        "height": 117
+      },
+      "region_attributes": {
+        "field_name": "height",
+        "val": "5-4",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1771,
+        "y": 1210,
+        "width": 214,
+        "height": 117
+      },
+      "region_attributes": {
+        "field_name": "weight",
+        "val": "120",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 0,
+        "y": 572,
+        "width": 1001,
+        "height": 1318
+      },
+      "region_attributes": {
+        "field_name": "face"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2512,
+        "y": 566,
+        "width": 497,
+        "height": 660
+      },
+      "region_attributes": {
+        "field_name": "face"
+      }
+    }
+  ],
+  "cropping_info": {
+    "transformation_matrix_into_cropped": [
+      [
+        0.9713280544883511,
+        -0.038341896887698075,
+        -38.40580004917755
+      ],
+      [
+        0.0097136245323781,
+        0.9692375978713469,
+        -1510.0840159634574
+      ],
+      [
+        -4.622807570455894e-06,
+        -8.364417499635124e-06,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 3193,
+    "resulted_cropped_image_height": 1977,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        101.0,
+        1557.0
+      ],
+      [
+        3294.0,
+        1525.0
+      ],
+      [
+        3317.0,
+        3473.0
+      ],
+      [
+        179.0,
+        3533.0
+      ]
+    ]
+  },
+  "ground_truth": "bonafide"
+}

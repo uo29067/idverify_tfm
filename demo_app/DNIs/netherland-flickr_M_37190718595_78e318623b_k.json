@@ -1,0 +1,212 @@
+{
+  "person_info": {
+    "gender": "M",
+    "face_id": "flickr_M_37190718595_78e318623b_k",
+    "face_db": "flickr-cropped"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 657,
+        "y": 311,
+        "width": 284,
+        "height": 75
+      },
+      "region_attributes": {
+        "field_name": "surname",
+        "val": "POSTMA",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 659,
+        "y": 377,
+        "width": 439,
+        "height": 73
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "val": "Henrike Petra",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 661,
+        "y": 443,
+        "width": 191,
+        "height": 76
+      },
+      "region_attributes": {
+        "field_name": "name2",
+        "val": "Petra",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1542,
+        "y": 573,
+        "width": 370,
+        "height": 75
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "06 03 1995",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1514,
+        "y": 749,
+        "width": 414,
+        "height": 75
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "19 09 2029",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 21,
+        "y": 173,
+        "width": 461,
+        "height": 73
+      },
+      "region_attributes": {
+        "field_name": "id_num_left",
+        "val": "OQCAXMXOB",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1449,
+        "y": 28,
+        "width": 459,
+        "height": 73
+      },
+      "region_attributes": {
+        "field_name": "id_num_right",
+        "val": "OQCAXMXOB",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 0,
+        "y": 302,
+        "width": 656,
+        "height": 813
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1726,
+        "y": 153,
+        "width": 162,
+        "height": 200
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 85,
+        "y": 559,
+        "width": 469,
+        "height": 412
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "source": "flickr_M_30518529884_4cf8f091df_c.jpg",
+        "target": "netherland-flickr_M_37190718595_78e318623b_k.jpg",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1754,
+        "y": 217,
+        "width": 117,
+        "height": 103
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "source": "flickr_M_30518529884_4cf8f091df_c.jpg",
+        "target": "netherland-flickr_M_37190718595_78e318623b_k.jpg",
+        "region_provenance": "altered"
+      }
+    }
+  ],
+  "cropping_info-altered-recaptured": {
+    "transformation_matrix_into_cropped": [
+      [
+        1.001660796793339,
+        0.012872749195737694,
+        -335.77198547479725
+      ],
+      [
+        -0.0030146616495072566,
+        1.0013701112446527,
+        -327.4515434822591
+      ],
+      [
+        3.9787404018087414e-07,
+        8.159717493121809e-07,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 1995,
+    "resulted_cropped_image_height": 1246,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        331.0,
+        328.0
+      ],
+      [
+        2324.0,
+        334.0
+      ],
+      [
+        2310.0,
+        1580.0
+      ],
+      [
+        315.0,
+        1573.0
+      ]
+    ],
+    "original_image_width": 3488,
+    "original_image_height": 2200
+  },
+  "ground_truth": "attack"
+}

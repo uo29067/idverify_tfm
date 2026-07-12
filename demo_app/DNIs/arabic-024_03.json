@@ -1,0 +1,185 @@
+{
+  "person_info": {
+    "gender": "M",
+    "face_id": "024_03",
+    "face_db": "facelab_london"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1156,
+        "y": 719,
+        "width": 776,
+        "height": 140
+      },
+      "region_attributes": {
+        "field_name": "Name",
+        "val": "Omar Khayyam",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1133,
+        "y": 500,
+        "width": 497,
+        "height": 135
+      },
+      "region_attributes": {
+        "field_name": "/الإسم",
+        "val": "عمر خيام",
+        "language": "arabic"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1148,
+        "y": 1219,
+        "width": 621,
+        "height": 146
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "09 Oct 1990",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2019,
+        "y": 1240,
+        "width": 986,
+        "height": 158
+      },
+      "region_attributes": {
+        "field_name": "تاريخ الميلاد",
+        "val": "٠٩ /أكتوبر/ ١٩٩٠",
+        "language": "arabic"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1142,
+        "y": 1484,
+        "width": 627,
+        "height": 149
+      },
+      "region_attributes": {
+        "field_name": "doi",
+        "val": "18 Apr 2024",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2016,
+        "y": 1510,
+        "width": 932,
+        "height": 161
+      },
+      "region_attributes": {
+        "field_name": "تاريخ الإصدار",
+        "val": "١٨ /أبريل/ ٢٠٢٤",
+        "language": "arabic"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1136,
+        "y": 1752,
+        "width": 627,
+        "height": 152
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "18 Apr 2034",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2011,
+        "y": 1781,
+        "width": 935,
+        "height": 166
+      },
+      "region_attributes": {
+        "field_name": "صالح لغاية",
+        "val": "١٨ /أبريل/ ٢٠٣٤",
+        "language": "arabic"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 94,
+        "y": 356,
+        "width": 984,
+        "height": 1332
+      },
+      "region_attributes": {
+        "field_name": "face"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2744,
+        "y": 578,
+        "width": 376,
+        "height": 480
+      },
+      "region_attributes": {
+        "field_name": "face"
+      }
+    }
+  ],
+  "cropping_info": {
+    "transformation_matrix_into_cropped": [
+      [
+        0.9586405859271219,
+        -0.046252339087392874,
+        2.807760415968341
+      ],
+      [
+        0.008307880734722597,
+        0.952735894256917,
+        -1480.1970111938922
+      ],
+      [
+        -6.277897035569663e-06,
+        -1.314556654655151e-05,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 3211,
+    "resulted_cropped_image_height": 1971,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        72.0,
+        1553.0
+      ],
+      [
+        3283.0,
+        1525.0
+      ],
+      [
+        3291.0,
+        3456.0
+      ],
+      [
+        167.0,
+        3522.0
+      ]
+    ]
+  },
+  "ground_truth": "bonafide"
+}

@@ -1,0 +1,171 @@
+{
+  "person_info": {
+    "gender": "F",
+    "face_id": "NF-1057",
+    "face_db": "AMFD_Faces_Final"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 958,
+        "y": 422,
+        "width": 454,
+        "height": 108
+      },
+      "region_attributes": {
+        "field_name": "surname_ua",
+        "val": "Ткачук /\r",
+        "language": "other"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 956,
+        "y": 503,
+        "width": 365,
+        "height": 108
+      },
+      "region_attributes": {
+        "field_name": "surname_en",
+        "val": "Tkachuk",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 953,
+        "y": 694,
+        "width": 792,
+        "height": 114
+      },
+      "region_attributes": {
+        "field_name": "name_ua",
+        "val": "Анна Василівна /\r",
+        "language": "other"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 953,
+        "y": 776,
+        "width": 245,
+        "height": 106
+      },
+      "region_attributes": {
+        "field_name": "name_en",
+        "val": "Anna",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 950,
+        "y": 999,
+        "width": 476,
+        "height": 111
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "06.04.1999",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 945,
+        "y": 1413,
+        "width": 476,
+        "height": 111
+      },
+      "region_attributes": {
+        "field_name": "doi",
+        "val": "07.09.2018",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 939,
+        "y": 1705,
+        "width": 473,
+        "height": 111
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "06.09.2023",
+        "language": "english"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 24,
+        "y": 585,
+        "width": 860,
+        "height": 1116
+      },
+      "region_attributes": {
+        "field_name": "face"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2563,
+        "y": 871,
+        "width": 286,
+        "height": 373
+      },
+      "region_attributes": {
+        "field_name": "face"
+      }
+    }
+  ],
+  "cropping_info": {
+    "transformation_matrix_into_cropped": [
+      [
+        0.9794593659869908,
+        -0.02237872090193443,
+        -85.29311188781934
+      ],
+      [
+        0.013928843442954216,
+        0.9847368387576839,
+        -2670.7122307063237
+      ],
+      [
+        -3.7452459196364186e-06,
+        -2.983915597338597e-06,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 3040,
+    "resulted_cropped_image_height": 1882,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        149.0,
+        2710.0
+      ],
+      [
+        3189.0,
+        2667.0
+      ],
+      [
+        3214.0,
+        4528.0
+      ],
+      [
+        192.0,
+        4592.0
+      ]
+    ]
+  },
+  "ground_truth": "bonafide"
+}

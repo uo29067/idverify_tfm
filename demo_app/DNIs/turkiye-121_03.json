@@ -1,0 +1,210 @@
+{
+  "person_info": {
+    "gender": "M",
+    "face_id": "121_03",
+    "face_db": "facelab_london"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 638,
+        "y": 482,
+        "width": 157,
+        "height": 75
+      },
+      "region_attributes": {
+        "field_name": "surname",
+        "val": "Balcı",
+        "language": "other",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 634,
+        "y": 638,
+        "width": 185,
+        "height": 75
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "val": "Baran",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 631,
+        "y": 793,
+        "width": 332,
+        "height": 76
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "14.07.1989",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 623,
+        "y": 1106,
+        "width": 330,
+        "height": 76
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "20.01.2037",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 14,
+        "y": 391,
+        "width": 563,
+        "height": 747
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1737,
+        "y": 598,
+        "width": 184,
+        "height": 248
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 123,
+        "y": 625,
+        "width": 362,
+        "height": 319
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "source": "045_03.jpg",
+        "target": "turkiye-121_03.png",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1773,
+        "y": 677,
+        "width": 122,
+        "height": 107
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "source": "045_03.jpg",
+        "target": "turkiye-121_03.png",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 822,
+        "y": 793,
+        "width": 141,
+        "height": 76
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "org_value": "1989",
+        "new_value": "2022",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 814,
+        "y": 1106,
+        "width": 139,
+        "height": 76
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "org_value": "2037",
+        "new_value": "1995",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 681,
+        "y": 638,
+        "width": 138,
+        "height": 75
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "org_value": "aran",
+        "new_value": "haun",
+        "region_provenance": "altered"
+      }
+    }
+  ],
+  "cropping_info": {
+    "transformation_matrix_into_cropped": [
+      [
+        1.0065907407336492,
+        -0.004045782719990575,
+        -239.61957315688028
+      ],
+      [
+        0.0010113330900595444,
+        1.0062764246092955,
+        -488.2867858771226
+      ],
+      [
+        1.6179851647700808e-06,
+        2.0030073990411967e-06,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 1995,
+    "resulted_cropped_image_height": 1248,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        240.0,
+        485.0
+      ],
+      [
+        2230.0,
+        483.0
+      ],
+      [
+        2240.0,
+        1731.0
+      ],
+      [
+        245.0,
+        1729.0
+      ]
+    ]
+  },
+  "ground_truth": "attack"
+}

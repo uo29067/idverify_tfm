@@ -1,0 +1,221 @@
+{
+  "person_info": {
+    "gender": "M",
+    "face_id": "142_03",
+    "face_db": "facelab_london"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 923,
+        "y": 598,
+        "width": 194,
+        "height": 99
+      },
+      "region_attributes": {
+        "field_name": "name_cn",
+        "val": "王磊",
+        "language": "other",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 923,
+        "y": 681,
+        "width": 386,
+        "height": 97
+      },
+      "region_attributes": {
+        "field_name": "name_en",
+        "val": "Wang Lei",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1706,
+        "y": 975,
+        "width": 493,
+        "height": 97
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "18 Apr 1987",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1708,
+        "y": 1232,
+        "width": 501,
+        "height": 97
+      },
+      "region_attributes": {
+        "field_name": "doi",
+        "val": "25 Feb 2014",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 937,
+        "y": 1511,
+        "width": 498,
+        "height": 97
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "23 Feb 2024",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 0,
+        "y": 431,
+        "width": 910,
+        "height": 1145
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2287,
+        "y": 478,
+        "width": 411,
+        "height": 513
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2337,
+        "y": 579,
+        "width": 333,
+        "height": 334
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 118,
+        "y": 671,
+        "width": 703,
+        "height": 702
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2010,
+        "y": 975,
+        "width": 189,
+        "height": 97
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "org_value": "1987",
+        "new_value": "2016",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1241,
+        "y": 1511,
+        "width": 194,
+        "height": 97
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "org_value": "2024",
+        "new_value": "2009",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 989,
+        "y": 681,
+        "width": 320,
+        "height": 97
+      },
+      "region_attributes": {
+        "field_name": "name_en",
+        "org_value": "ang Lei",
+        "new_value": "eorgeei",
+        "region_provenance": "altered"
+      }
+    }
+  ],
+  "cropping_info": {
+    "transformation_matrix_into_cropped": [
+      [
+        1.0286917711046863,
+        0.002413353128691342,
+        -122.69969976892541
+      ],
+      [
+        -0.0007333047368148261,
+        1.0207601936462734,
+        -1425.9169271743733
+      ],
+      [
+        1.2050980195585023e-05,
+        -4.2063638194428155e-06,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 2784,
+    "resulted_cropped_image_height": 1762,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        116.0,
+        1397.0
+      ],
+      [
+        2900.0,
+        1399.0
+      ],
+      [
+        2875.0,
+        3161.0
+      ],
+      [
+        112.0,
+        3102.0
+      ]
+    ]
+  },
+  "ground_truth": "attack"
+}

@@ -1,0 +1,182 @@
+{
+  "person_info": {
+    "gender": "M",
+    "face_id": "flickr_M_24170605047_501e882ccc_o",
+    "face_db": "flickr-cropped"
+  },
+  "regions": [
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 764,
+        "y": 727,
+        "width": 1076,
+        "height": 122
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "val": "Firdaus bin Ismail",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 778,
+        "y": 1457,
+        "width": 661,
+        "height": 127
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "val": "1967-08-03",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1834,
+        "y": 1738,
+        "width": 664,
+        "height": 127
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "val": "1977-08-03",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 2192,
+        "y": 1224,
+        "width": 866,
+        "height": 124
+      },
+      "region_attributes": {
+        "field_name": "id_num_right",
+        "val": "FN-167136-446",
+        "language": "english",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 0,
+        "y": 445,
+        "width": 676,
+        "height": 840
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 338,
+        "y": 1371,
+        "width": 258,
+        "height": 323
+      },
+      "region_attributes": {
+        "field_name": "face",
+        "region_provenance": "original"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 778,
+        "y": 1457,
+        "width": 661,
+        "height": 127
+      },
+      "region_attributes": {
+        "field_name": "dob",
+        "org_value": "1967-08-03",
+        "new_value": "11-06-78",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 764,
+        "y": 727,
+        "width": 1076,
+        "height": 122
+      },
+      "region_attributes": {
+        "field_name": "name",
+        "org_value": "Firdaus bin Ismail",
+        "new_value": "Charles bin Ismail",
+        "region_provenance": "altered"
+      }
+    },
+    {
+      "shape_attributes": {
+        "name": "rect",
+        "x": 1834,
+        "y": 1738,
+        "width": 664,
+        "height": 127
+      },
+      "region_attributes": {
+        "field_name": "doe",
+        "org_value": "1977-08-03",
+        "new_value": "02-05-04",
+        "region_provenance": "altered"
+      }
+    }
+  ],
+  "cropping_info-altered-recaptured": {
+    "transformation_matrix_into_cropped": [
+      [
+        1.0090212468584006,
+        0.01231139294590829,
+        -204.0054238354673
+      ],
+      [
+        -0.0012738510537103245,
+        1.0088900345385698,
+        -1751.2025329182356
+      ],
+      [
+        2.407189631536684e-06,
+        3.7741660342847957e-07,
+        1.0
+      ]
+    ],
+    "resulted_cropped_image_width": 3170,
+    "resulted_cropped_image_height": 1982,
+    "original_rectangle_tl_tr_br_bl": [
+      [
+        181.0,
+        1736.0
+      ],
+      [
+        3349.0,
+        1740.0
+      ],
+      [
+        3327.0,
+        3722.0
+      ],
+      [
+        157.0,
+        3703.0
+      ]
+    ],
+    "original_image_width": 3488,
+    "original_image_height": 2200
+  },
+  "ground_truth": "attack"
+}
